@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:background="@color/MainColor">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mainlogo_removebg_preview"
+        app:layout_constraintTop_toBottomOf="@id/Passwordlayout"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/SignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Sign_In"
+        android:textSize="48sp"
+        android:textColor="@color/ThirdlyColor"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Email Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Emaillayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/SignIn"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/MainColor"
+        android:hint="@string/Email"
+        android:textColorHint="@color/MainColor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/MainColor"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Password Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Passwordlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/Emaillayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/MainColor"
+        android:hint="@string/Password"
+        android:textColorHint="@color/MainColor">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/MainColor"
+            android:padding="12dp"
+            android:background="@drawable/rounded_edittext"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Sign In Button -->
+    <Button
+        android:id="@+id/SignInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Sign_In"
+        app:layout_constraintTop_toBottomOf="@id/Passwordlayout"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/ThirdlyColor"/>
+
+    <!-- Sign Up Button -->
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Create_Acc"
+        app:layout_constraintTop_toBottomOf="@id/SignInButton"
+        android:backgroundTint="@color/ThirdlyColor"/>
+
+    <!-- Language Switch -->
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/languageSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_language"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

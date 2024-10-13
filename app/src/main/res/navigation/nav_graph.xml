@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreen">
+
+    <!-- Splash Screen -->
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.myapplication.SplashScreen"
+        android:label="Splash Screen"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreen_to_signIn"
+            app:destination="@id/signIn" />
+    </fragment>
+
+    <!-- Sign In Screen -->
+    <fragment
+        android:id="@+id/signIn"
+        android:name="com.example.myapplication.SignIn"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signIn_to_signUp"
+            app:destination="@id/signUp" />
+        <action
+            android:id="@+id/action_signIn_to_selection"
+            app:destination="@id/selection" />
+    </fragment>
+
+    <!-- Sign Up Screen -->
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.example.myapplication.SignUp"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUp_to_signIn"
+            app:destination="@id/signIn" />
+    </fragment>
+
+    <!-- Choose Role Screen -->
+
+    <!-- Job Seeker Home Screen -->
+    <fragment
+        android:id="@+id/jobSeekerHome"
+        android:name="com.example.myapplication.JobSeekerHome"
+        android:label="Job Seeker Home"
+        tools:layout="@layout/fragment_job_seeker_home"/>
+
+    <!-- Company Home Screen -->
+    <fragment
+        android:id="@+id/companyHome"
+        android:name="com.example.myapplication.CompanyHome"
+        android:label="Company Home"
+        tools:layout="@layout/fragment_company_home">
+        <action
+            android:id="@+id/action_companyHome_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/selection"
+        android:name="com.example.myapplication.Selection"
+        android:label="Selection" >
+        <action
+            android:id="@+id/action_selection_to_companyHome"
+            app:destination="@id/companyHome" />
+        <action
+            android:id="@+id/action_selection_to_jobSeekerHome"
+            app:destination="@id/jobSeekerHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail"
+        android:name="com.example.myapplication.Detail"
+        android:label="Detail" />
+
+    <!-- Job Seeker Profile Screen -->
+
+</navigation>
