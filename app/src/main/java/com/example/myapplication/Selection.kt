@@ -18,6 +18,13 @@ import com.example.myapplication.databinding.FragmentSignInBinding
 class Selection : Fragment() {
 
     private lateinit var binding: FragmentSelectionBinding
+    private lateinit var sharedPreferences: SharedPreferences
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Initialize SharedPreferences in onCreate, before it is used
+        sharedPreferences = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +36,17 @@ class Selection : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Save role as "company" when company is selected
         binding.cardCompany.setOnClickListener {
-            findNavController().navigate(R.id.action_selection_to_companyHome)
+            sharedPreferences.edit().putString("USER_ROLE", "company").apply()
+            findNavController().navigate(R.id.action_selection_to_signIn)
         }
+
+        // Save role as "job_seeker" when job seeker is selected
         binding.cardJobSeeker.setOnClickListener {
-            findNavController().navigate(R.id.action_selection_to_jobSeekerHome)
+            sharedPreferences.edit().putString("USER_ROLE", "job_seeker").apply()
+            findNavController().navigate(R.id.action_selection_to_signIn)
         }
     }
 }

@@ -18,24 +18,21 @@ class SignIn : Fragment() {
     private lateinit var navController: NavController
     private lateinit var binding: FragmentSignInBinding
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences2: SharedPreferences
     lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Initialize SharedPreferences
         sharedPreferences = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPreferences2 = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Initialize the binding
         binding = FragmentSignInBinding.inflate(inflater, container, false)
-
-        // Set the switch state based on saved language
-        binding.languageSwitch.isChecked = sharedPreferences.getString("LANGUAGE", "en") == "ar"
-
+        binding.language.isChecked = sharedPreferences2.getString("LANGUAGE", "en") == "ar"
         return binding.root
     }
 
@@ -45,7 +42,6 @@ class SignIn : Fragment() {
         navController = Navigation.findNavController(view)
 
         binding.btnSignUp.setOnClickListener {
-
             navController.navigate(R.id.action_signIn_to_signUp)
         }
 
@@ -55,18 +51,16 @@ class SignIn : Fragment() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 signInUser(email, password)
-            }
-            else {
+            } else {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Set up switch listener
-        binding.languageSwitch.setOnCheckedChangeListener { _, isChecked ->
-            val newLanguage = if (isChecked) "ar" else "en"
+        binding.language.setOnClickListener {
+            val currentLanguage = sharedPreferences2.getString("LANGUAGE", "en") ?: "en"
+            val newLanguage = if (currentLanguage == "en") "ar" else "en"
             (activity as? MainActivity)?.applyConfiguration(newLanguage)
             Log.d("LanguageSwitch", "Language changed to: $newLanguage")
-
         }
     }
 
@@ -74,13 +68,22 @@ class SignIn : Fragment() {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(requireContext(), "Sign-In Successful", Toast.LENGTH_SHORT).show()
-                navController.navigate(R.id.action_signIn_to_selection)
+                navigateToHomeScreen()
             } else {
                 Toast.makeText(requireContext(), "Sign-In Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    private fun navigateToHomeScreen() {
+        // Get the stored role from SharedPreferences
+        val userRole = sharedPreferences.getString("USER_ROLE", "")
 
-
+        // Navigate based on the role
+        when (userRole) {
+            "company" -> navController.navigate(R.id.action_signIn_to_companyHomeScreen3)
+            "job_seeker" -> navController.navigate(R.id.action_signIn_to_disabilityHome)
+            else -> Toast.makeText(requireContext(), "Role not found", Toast.LENGTH_SHORT).show()
+        }
+    }
 }

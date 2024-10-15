@@ -29,7 +29,7 @@ class SplashScreen : Fragment() {
 
         Handler(Looper.myLooper()!!).postDelayed(Runnable {
 
-            navcontroller.navigate(R.id.action_splashScreen_to_signIn)
+            navcontroller.navigate(R.id.action_splashScreen_to_selection)
 
         }, 3000)
 

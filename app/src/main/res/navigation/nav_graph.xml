@@ -12,8 +12,17 @@
         android:label="Splash Screen"
         tools:layout="@layout/fragment_splash_screen">
         <action
+            android:id="@+id/action_splashScreen_to_selection"
+            app:destination="@id/selection" />
+        <action
             android:id="@+id/action_splashScreen_to_signIn"
             app:destination="@id/signIn" />
+        <action
+            android:id="@+id/action_splashScreen_to_disabilityHome"
+            app:destination="@id/disabilityHome" />
+        <action
+            android:id="@+id/action_splashScreen_to_companyHomeScreen3"
+            app:destination="@id/companyHomeScreen3" />
     </fragment>
 
     <!-- Sign In Screen -->
@@ -26,8 +35,14 @@
             android:id="@+id/action_signIn_to_signUp"
             app:destination="@id/signUp" />
         <action
-            android:id="@+id/action_signIn_to_selection"
-            app:destination="@id/selection" />
+            android:id="@+id/action_signIn_to_disabilityHome"
+            app:destination="@id/disabilityHome" />
+        <action
+            android:id="@+id/action_signIn_to_companyHomeScreen3"
+            app:destination="@id/companyHomeScreen3" />
+        <action
+            android:id="@+id/action_signIn_to_signUp2"
+            app:destination="@id/signUp" />
     </fragment>
 
     <!-- Sign Up Screen -->
@@ -41,14 +56,32 @@
             app:destination="@id/signIn" />
     </fragment>
 
-    <!-- Choose Role Screen -->
+    <!-- Role Selection Screen -->
+    <fragment
+        android:id="@+id/selection"
+        android:name="com.example.myapplication.Selection"
+        android:label="Role Selection">
+        <action
+            android:id="@+id/action_selection_to_signIn"
+            app:destination="@id/signIn" />
+        <action
+            android:id="@+id/action_selection_to_disabilityHome"
+            app:destination="@id/disabilityHome" />
+        <action
+            android:id="@+id/action_selection_to_companyHomeScreen3"
+            app:destination="@id/companyHomeScreen3" />
+    </fragment>
 
     <!-- Job Seeker Home Screen -->
     <fragment
-        android:id="@+id/jobSeekerHome"
-        android:name="com.example.myapplication.JobSeekerHome"
-        android:label="Job Seeker Home"
-        tools:layout="@layout/fragment_job_seeker_home"/>
+        android:id="@+id/disabilityHome"
+        android:name="com.example.myapplication.DisabilityHome"
+        android:label="Disability Home"
+        tools:layout="@layout/fragment_disability_home" >
+        <action
+            android:id="@+id/action_disabilityHome_to_jobSeekerHome3"
+            app:destination="@id/jobSeekerHome3" />
+    </fragment>
 
     <!-- Company Home Screen -->
     <fragment
@@ -60,22 +93,23 @@
             android:id="@+id/action_companyHome_to_detail"
             app:destination="@id/detail" />
     </fragment>
-    <fragment
-        android:id="@+id/selection"
-        android:name="com.example.myapplication.Selection"
-        android:label="Selection" >
-        <action
-            android:id="@+id/action_selection_to_companyHome"
-            app:destination="@id/companyHome" />
-        <action
-            android:id="@+id/action_selection_to_jobSeekerHome"
-            app:destination="@id/jobSeekerHome" />
-    </fragment>
+
+    <!-- Detail Screen -->
     <fragment
         android:id="@+id/detail"
         android:name="com.example.myapplication.Detail"
         android:label="Detail" />
-
-    <!-- Job Seeker Profile Screen -->
+    <fragment
+        android:id="@+id/companyHomeScreen3"
+        android:name="com.example.myapplication.CompanyHomeScreen"
+        android:label="CompanyHomeScreen" >
+        <action
+            android:id="@+id/action_companyHomeScreen3_to_companyHome"
+            app:destination="@id/companyHome" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobSeekerHome3"
+        android:name="com.example.myapplication.JobSeekerHome"
+        android:label="JobSeekerHome" />
 
 </navigation>

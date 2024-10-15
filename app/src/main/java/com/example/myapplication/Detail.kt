@@ -43,6 +43,7 @@ class Detail : Fragment() {
                 binding.phone.text = disabilityData?.phone
                 binding.Email.text = disabilityData?.email
                 binding.skill.text = disabilityData?.skill
+                binding.Address.text = disabilityData?.address
                 binding.disability.text = disabilityData?.disability
             }
             else {

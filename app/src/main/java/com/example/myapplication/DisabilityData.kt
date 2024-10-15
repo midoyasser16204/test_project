@@ -9,5 +9,6 @@ data class DisabilityData(
     var phone: String = "",
     var email: String = "",
     var skill: String = "",
+    var address: String = "",
     var disability: String = ""
 ):Serializable
